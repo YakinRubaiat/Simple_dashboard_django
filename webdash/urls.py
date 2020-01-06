@@ -20,5 +20,5 @@ from webdash import views
 urlpatterns = [
     path('',views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
-    path('account/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
 ]

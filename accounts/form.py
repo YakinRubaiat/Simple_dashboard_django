@@ -13,8 +13,7 @@ class RegistrationForm(UserCreationForm):
             'last_name',
             'email',
             'password1',
-            'password2'
-            
+            'password2'          
             )
     def save(self, commit=True):
         user = super(RegistrationForm,self).save(commit=False)

@@ -21,4 +21,5 @@ urlpatterns = [
     path('',views.login_redirect, name='login_redirect'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('api/accounts/', include('accounts.api.urls', 'account_api')),
 ]

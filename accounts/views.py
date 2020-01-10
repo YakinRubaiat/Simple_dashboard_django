@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm, PasswordChangeForm
 from accounts.form import RegistrationForm, EditProfileForm
+from accounts.serailizer import UserSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
@@ -12,9 +13,9 @@ from django.contrib.auth import login
 
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        serialize = UserSerializer(data=request.POST)
+        if serialize.is_valid():
+            user = serialize.save()            
             login(request, user)
             return redirect('/accounts/profile')
         else:
@@ -35,7 +36,7 @@ def view_profile(request):
 @login_required(login_url='/accounts/login')
 def edit_profile(request):
     if request.method == 'POST':
-        form = EditProfileForm(request.POST,instance=request.user)
+        form = EditProfileForm(data=request.POST, user=request.user)
 
         if form.is_valid():
             form.save()

@@ -7,9 +7,9 @@
 {% block body %}
 <div class="container">
     <h1>Profile</h1>
-    <p> Username  : {{user}} </p>
+    <p> Username  : {{user.username}} </p>
     <p> FirstName : {{user.first_name}} </p>
     <p> LastName  : {{user.last_name}} </p>
-    <p> Email     :  {{user.email}}   </p>
+    <p> Email     : {{user.email}}   </p>
 </div>
 {% endblock %}
